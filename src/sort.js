@@ -74,6 +74,18 @@ Array.prototype.sleep = async function () {
     return await Sort.sleep(this);
 }
 
+Sort.quick = function (arr) {
+
+}
+
+Array.prototype.quick = function () {
+    return Sort.quick(this);
+}
+
+Sort.selection = function (arr) {
+    
+}
+
 Sort.isSorted = function (arr) {
     for (let i = 0; i < arr.length - 1; i++) {
         if (arr[i] > arr[i + 1]) {
@@ -82,6 +94,9 @@ Sort.isSorted = function (arr) {
     }
     return true;
 };
+
+// https://www.youtube.com/watch?v=AAwYzYkjNTg ?
+// https://www.youtube.com/watch?v=OOBBI-kSChM
 
 (async () => {
     console.log(await [1,3,2,6,7,8,9].sleep());
