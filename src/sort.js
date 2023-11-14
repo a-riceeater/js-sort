@@ -70,6 +70,10 @@ Sort.sleep = async function (arr) {
     });
 };
 
+Array.prototype.sleep = async function () {
+    return await Sort.sleep(this);
+}
+
 Sort.isSorted = function (arr) {
     for (let i = 0; i < arr.length - 1; i++) {
         if (arr[i] > arr[i + 1]) {
@@ -80,6 +84,5 @@ Sort.isSorted = function (arr) {
 };
 
 (async () => {
-    let a = await Sort.sleep([1,3,2,6,7,8,9]);
-    console.log(a)
+    console.log(await [1,3,2,6,7,8,9].sleep());
 })();
