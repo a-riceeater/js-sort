@@ -4,12 +4,12 @@ Sort.bogo = function (arr) {
     const start = new Date().getTime()
     while (true) {
         let index = arr.length, rIndex;
-  
+
         while (index > 0) {
-          rIndex = Math.floor(Math.random() * index);
-          index--;
-      
-          [arr[index], arr[rIndex]] = [arr[rIndex], arr[index]];
+            rIndex = Math.floor(Math.random() * index);
+            index--;
+
+            [arr[index], arr[rIndex]] = [arr[rIndex], arr[index]];
         }
 
         if (Sort.isSorted(arr)) {
@@ -18,36 +18,51 @@ Sort.bogo = function (arr) {
             return arr
         }
     }
-    
-  } 
+}
+
+Array.prototype.bogo = function () {
+    return Sort.bogo(this);
+}
+
+Sort.bubble = function (arr) {
+    const start = new Date().getTime()
+    for (let i = 0; i < arr.length - 1; i++) {
+        for (let j = 0; j < arr.length - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+                console.log(arr[j], arr[j + 1])
+            }
+        }
+    }
+    const end = new Date().getTime()
+    console.log(((end - start) / 1000) + "ms")
+    return arr;
+}
+
+Array.prototype.bubble = function () {
+    return Sort.bubble(this)
+}
+
+Sort.stalin = function (arr) {
+    for (let i = 0; i < arr.length - 1; i++) {
+        if (arr[i + 1] < arr[i]) {
+            arr.splice(i + 1, 1);
+        }
+    }
+    return arr
+}
+
+Array.prototype.stalin = function () {
+    return Sort.stalin(this);
+}
 
 Sort.isSorted = function (arr) {
     for (let i = 0; i < arr.length - 1; i++) {
-        if (arr[i] > arr[i+1]) {
+        if (arr[i] > arr[i + 1]) {
             return false;
         }
     }
     return true;
 }
 
-const arr = shuffle(Array.from(Array(100).keys()));
-console.dir(arr)
-console.log(Sort.bogo(arr));
-
-function shuffle(array) {
-    let currentIndex = array.length,  randomIndex;
-  
-    // While there remain elements to shuffle.
-    while (currentIndex > 0) {
-  
-      // Pick a remaining element.
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
-  
-      // And swap it with the current element.
-      [array[currentIndex], array[randomIndex]] = [
-        array[randomIndex], array[currentIndex]];
-    }
-  
-    return array;
-  }
+console.log(Sort.stalin([1,3,2,6,4]))
