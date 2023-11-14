@@ -56,6 +56,21 @@ Array.prototype.stalin = function () {
     return Sort.stalin(this);
 }
 
+Sort.sleep = async function (arr) {
+    return new Promise((resolve) => {
+        const out = [];
+        for (let i = 0; i < arr.length; i++) {
+            setTimeout(() => {
+                out.push(arr[i]);
+                if (i == arr.length - 1) {
+                    console.log(out);
+                    resolve(out);
+                }
+            }, arr[i]);
+        }
+    });
+};
+
 Sort.isSorted = function (arr) {
     for (let i = 0; i < arr.length - 1; i++) {
         if (arr[i] > arr[i + 1]) {
@@ -63,6 +78,9 @@ Sort.isSorted = function (arr) {
         }
     }
     return true;
-}
+};
 
-console.log(Sort.stalin([1,3,2,6,4]))
+(async () => {
+    let a = await Sort.sleep([1,3,2,6,7,8,9]);
+    console.log(a)
+})();
