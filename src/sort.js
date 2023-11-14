@@ -63,7 +63,6 @@ Sort.sleep = async function (arr) {
             setTimeout(() => {
                 out.push(arr[i]);
                 if (i == arr.length - 1) {
-                    console.log(out);
                     resolve(out);
                 }
             }, arr[i]);
