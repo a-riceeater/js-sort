@@ -83,7 +83,19 @@ Array.prototype.quick = function () {
 }
 
 Sort.selection = function (arr) {
-
+    for (let i = 0; i < arr.length - 1; i++) {
+        let lowest = arr[i];
+        let lindex;
+        for (let j = i; j < arr.length; j++) {
+            if (j < lowest) lowest = arr[j], lindex = j, console.log(lowest, "lowest");
+            if (j == arr.length - 1) {
+                arr.splice(i, 0, arr.splice(lindex, 1)[0]);
+                console.log(arr)
+            }
+        }
+        //return arr
+    }
+    return arr
 }
 
 Array.prototype.selection = function () {
@@ -110,6 +122,4 @@ Sort.isSorted = function (arr) {
 // https://www.youtube.com/watch?v=AAwYzYkjNTg ?
 // https://www.youtube.com/watch?v=OOBBI-kSChM
 
-(async () => {
-    console.log(await [1, 3, 2, 6, 7, 8, 9].sleep());
-})();
+console.dir(Sort.selection([8,2,5,7,6,3]))
