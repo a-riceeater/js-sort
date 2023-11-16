@@ -84,19 +84,17 @@ Array.prototype.quick = function () {
 
 Sort.selection = function (arr) {
     for (let i = 0; i < arr.length - 1; i++) {
-        let lowest = arr[i];
-        let lindex;
-        for (let j = i; j < arr.length; j++) {
-            if (j < lowest) lowest = arr[j], lindex = j, console.log(lowest, "lowest");
-            if (j == arr.length - 1) {
-                arr.splice(i, 0, arr.splice(lindex, 1)[0]);
-                console.log(arr)
+        let minIndex = i;
+        for (let j = i + 1; j < arr.length; j++) {
+            if (arr[j] < arr[minIndex]) {
+                minIndex = j;
             }
         }
-        //return arr
+        [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
     }
-    return arr
-}
+    return arr;
+ }
+ 
 
 Array.prototype.selection = function () {
     return Sort.selection(this);
