@@ -83,7 +83,19 @@ Array.prototype.quick = function () {
 }
 
 Sort.selection = function (arr) {
-    
+
+}
+
+Array.prototype.selection = function () {
+    return Sort.selection(this);
+}
+
+Sort.heap = function (arr) {
+
+}
+
+Array.prototype.heap = function () {
+    return Sort.heap(this);
 }
 
 Sort.isSorted = function (arr) {
@@ -99,5 +111,5 @@ Sort.isSorted = function (arr) {
 // https://www.youtube.com/watch?v=OOBBI-kSChM
 
 (async () => {
-    console.log(await [1,3,2,6,7,8,9].sleep());
+    console.log(await [1, 3, 2, 6, 7, 8, 9].sleep());
 })();
